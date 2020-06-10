@@ -1,7 +1,9 @@
 # gitlab-registry-cleaner
-GitLab Registry Cleaner - tool for clean up the GitLab Docker registry
+
+#### GitLab Registry Cleaner - tool for clean up the GitLab Docker registry
 
 ##### Как использовать:
+
 * Клонировать данный репозиторий;
 * Установить требуемые зависимости командой, выполняемой в корне репозитория: `pip3 install -r requirements.txt`
 * В файл configs.py необходимо внести следующие измнения:
@@ -15,3 +17,7 @@ GitLab Registry Cleaner - tool for clean up the GitLab Docker registry
 ##### Пример:
 
 Cледующая команда `python3 cleaner.py '.*' 5 1month` удалит все теги (regex '.*'), сохранив 5 последних, которые старше одного месяца.
+
+##### Примечание:
+
+После удаления тегов из GitLab Registry, для освобождения дискового пространства на сервере GitLab, необходимо запустить [garbage-collect](https://docs.gitlab.com/ee/administration/packages/container_registry.html#recycling-unused-tags) следующей командой: `sudo gitlab-ctl registry-garbage-collect`
